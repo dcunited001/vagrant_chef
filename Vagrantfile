@@ -22,12 +22,12 @@ Vagrant::Config.run do |config|
   @cs_port           = 4000
   @cs_ssh_port       = 2200
   @cs_webui_port     = 4040
-  @cs_webui_host_ssl = 4430
   @cs_kitchen        = @cs_root_path
   @cs_validation_client_name = "chef-validator"
 
   config.vm.define :chef do |conf|
 
+    conf.vm.host_name = "chefserver.vm"
     conf.vm.box = "UbuntuChefserverBase"
     # conf.vm.box_url = "#{@cs_box_url}"
     conf.vm.customize ["modifyvm", :id, "--memory", "1024"]
@@ -115,6 +115,9 @@ end
 
 # provisioning vagrant boxes with chef
 # http://docs.vagrantup.com/v1/docs/provisioners/chef_server.html
+
+# manage dns for vagrant hosts/guests
+# https://github.com/mosaicxm/vagrant-hostmaster
 
 # vagrantfile example in Cuken gem specs
 # https://github.com/hedgehog/cuken/blob/master/features/chef_examples/zenoss_example/01_chef_server_setup.feature
