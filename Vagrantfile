@@ -22,6 +22,7 @@ Vagrant::Config.run do |config|
   @cs_port           = 4000
   @cs_ssh_port       = 2200
   @cs_webui_port     = 4040
+  @cs_webui_host_ssl = 4430
   @cs_kitchen        = @cs_root_path
   @cs_validation_client_name = "chef-validator"
 
@@ -34,6 +35,7 @@ Vagrant::Config.run do |config|
     #conf.vm.forward_port "web", 80, 8080 # necessary?
     conf.vm.forward_port @cs_port, @cs_port
     conf.vm.forward_port @cs_webui_port, @cs_webui_port
+    #conf.vm.forward_port 443, @cs_webui_host_ssl
     conf.vm.forward_port 22, @cs_ssh_port, auto: true
 
     conf.vm.boot_mode = :headless # or :gui
