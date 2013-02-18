@@ -19,7 +19,7 @@ Vagrant::Config.run do |config|
     #   doesn't need to be on the host machine's net .. i think?
     conf.vm.network :hostonly, "10.10.10.10", :netmask => "255.255.255.0"
     conf.ssh.username = SSHUSER
-    #TODO: conf.ssh.shell = "/usr/local/bin/zsh"
+    conf.ssh.shell = "/usr/bin/zsh"
 
     # NFS shared-folder
     #   host - `which nfsd`; brew install?
